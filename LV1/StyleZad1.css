@@ -1,0 +1,18 @@
+.left {
+  width: 45%;
+  float: left;
+}
+
+.end {
+  clear: both;
+  content: "";
+}
+
+table, td, tr {
+    border: 1px solid black;
+    text-align: center;
+}
+
+footer {
+  margin-top: auto;
+}

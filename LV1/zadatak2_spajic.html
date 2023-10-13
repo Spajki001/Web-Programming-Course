@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="StyleZad2.css">
+    <title>zadatak2_spajic</title>
+</head>
+    <body>
+        <div class="container">
+            <form>
+                <h1><a href="Zad1.html">OBRAZAC</a></h1>
+                <div class="padding">
+                    <label for="username" style="display: flex;
+                    flex-direction: column;">Korisničko ime</label>
+                    <input type="text" name="korisnicko_ime" id="username" size="15" placeholder="Korisnik">
+                </div>
+                <div class="padding">
+                    <label for="password" style="display: flex;
+                    flex-direction: column;">Lozinka</label>
+                    <input type="password" name="lozinka" id="password" size="15" placeholder="Lozinka">
+                </div>
+                <div class="padding">
+                    <label for="grade" style="display: flex;
+                    flex-direction: column;">Ocjena</label>
+                    <select name="ocjena" id="grade">
+                        <option value="5">Odličan (5)</option>
+                        <option value="4">Vrlo dobar (4)</option>
+                        <option value="3">Dobar (3)</option>
+                        <option value="2">Dovoljan (2)</option>
+                        <option value="1">Nedovoljan (1)</option>
+                    </select>
+                </div>
+                <div class="padding">
+                    <label for="comment" style="display: flex;
+                    flex-direction: column;">Komentar</label>
+                    <textarea name="komentar" id="comment" cols="40" rows="7" placeholder="Komentar"></textarea>
+                </div>
+                <div class="padding">
+                    <input type="radio" id="communicative" name="OralGrade" value="Komunikativan">
+                    <label for="communicative">Komunikativan</label>
+                    <input type="radio" id="dependent" name="OralGrade" value="Samostalan">
+                    <label for="dependent">Samostalan</label>
+                    <input type="radio" id="hardworking" name="OralGrade" value="Radišan">
+                    <label for="hardworking">Radišan</label>
+                    <input type="radio" id="none" name="OralGrade" value="Ništa od navedenog" checked>
+                    <label for="none">Ništa od navedenog</label>
+                </div>
+                <div class="padding">
+                    <table style="margin: auto;">
+                        <tr>
+                            <td><button type="submit">Pošalji</button></td>
+                        </tr>
+                        <tr>
+                            <td><button type="reset">Poništi</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
