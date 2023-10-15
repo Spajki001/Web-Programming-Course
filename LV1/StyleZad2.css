@@ -1,17 +1,18 @@
 .container {
-    display:flex;
-    width: 100vw;
-    height: 100vh;
-    align-items: top;
-    justify-content: center;
-    text-align: center;
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	align-items: top;
+	justify-content: center;
+	text-align: center;
 }
 
-label, input {
-    margin: auto;
+label,
+input {
+	margin: auto;
 }
 
 .padding {
-    padding-top: 2%;
-    padding-bottom: 2%;
+	padding-top: 2%;
+	padding-bottom: 2%;
 }
