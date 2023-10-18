@@ -1,0 +1,19 @@
+.paragraphs {
+	display: flex;
+	justify-content: flex-end;
+	font-style: italic;
+	font-family: "sans-serif";
+	color: blue;
+}
+
+.first {
+	text-align: center;
+	color: red;
+	size-adjust: 10%;
+	font-family: "Times New Roman";
+}
+
+.second {
+	text-align: justify;
+	font-family: "Verdana";
+}
