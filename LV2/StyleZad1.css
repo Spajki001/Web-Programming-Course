@@ -1,15 +1,19 @@
-.paragraphs {
-	justify-content: end;
+p {
 	font-style: italic;
 	font-family: sans-serif;
 	color: blue;
+	text-align: right;
 }
 
-.first {
+#first {
 	text-align: center;
 	color: red;
 	font-size: 110%;
-	font-family: "Times New Roman";
+	font-family: "Times New Roman", Times, serif;
+}
+
+.right {
+	float: right;
 }
 
 #paragraph2 {
@@ -23,4 +27,12 @@ a {
 
 a:hover {
 	color: gray;
+}
+.end {
+	clear: both;
+	content: "";
+}
+
+footer {
+	margin-top: auto;
 }

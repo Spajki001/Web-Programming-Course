@@ -1,0 +1,35 @@
+#lista {
+	padding-block: 20px;
+	display: flex;
+}
+
+#lista li {
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin: 8px;
+	border-color: #345678;
+	border-style: solid;
+	border-width: 2px;
+	list-style-type: none;
+}
+
+#lista a {
+	border-width: 2px;
+	border-color: blueviolet;
+	color: blueviolet;
+	background-color: #16cae1;
+	text-decoration: none;
+}
+
+#lista a:hover {
+	border-color: yellow;
+	background-color: yellow;
+}
+
+#lista a:active {
+	color: red;
+	background-color: green;
+	border-color: red;
+}
