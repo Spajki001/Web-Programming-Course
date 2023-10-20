@@ -1,19 +1,26 @@
 .paragraphs {
-	display: flex;
-	justify-content: flex-end;
+	justify-content: end;
 	font-style: italic;
-	font-family: "sans-serif";
+	font-family: sans-serif;
 	color: blue;
 }
 
 .first {
 	text-align: center;
 	color: red;
-	size-adjust: 10%;
+	font-size: 110%;
 	font-family: "Times New Roman";
 }
 
-.second {
+#paragraph2 {
 	text-align: justify;
 	font-family: "Verdana";
+}
+
+a {
+	color: yellow;
+}
+
+a:hover {
+	color: gray;
 }
