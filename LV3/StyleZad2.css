@@ -38,6 +38,14 @@
 	transform-origin: bottom left;
 }
 
+.image-col {
+	padding-bottom: 10px;
+}
+
+.container {
+	padding-bottom: 20px;
+}
+
 .table .table-header {
 	background-color: brown;
 	text-align: center;
@@ -48,11 +56,11 @@
 }
 
 .table tbody tr:nth-child(even) {
-	background-color: burlywood;
+	--bs-table-bg: burlywood;
 }
 
 .table tbody tr:nth-child(odd) {
-	background-color: darkolivegreen;
+	--bs-table-bg: darkolivegreen;
 }
 
 .table tbody th,
@@ -63,7 +71,7 @@
 
 .table tbody td.important {
 	font-weight: bold;
-	color: deeppink;
+	color: brown;
 	font-style: italic;
 }
 
