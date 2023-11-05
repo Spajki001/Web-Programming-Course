@@ -1,0 +1,14 @@
+#FnameLname,
+#NumberPwr,
+#EmailField {
+	resize: none;
+}
+
+body {
+	text-align: center;
+	justify-content: center;
+}
+
+div {
+	padding-bottom: 15px;
+}

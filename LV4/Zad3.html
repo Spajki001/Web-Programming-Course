@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>JavaScript</title>
+	</head>
+	<body>
+		<h1>Simple object creation</h1>
+		<script>
+			//Creating the objects
+			var white = { name: "Jura", type: "dalmatian", age: 8 };
+			var black = { name: "Garo", type: "pudle", age: 2 };
+			var golden = { name: "Bela", type: "labrador", age: 6 };
+			var brown = { name: "Zoe", type: "american stafford", age: 1 };
+
+			//Outputting created objects
+			document.write(
+				"1st dog's name: " +
+					white.name +
+					"<br>Type: " +
+					white.type +
+					"<br>Age: " +
+					white.age +
+					"<br><br>"
+			);
+			document.write(
+				" 2nd dog's name: " +
+					black.name +
+					"<br>Type: " +
+					black.type +
+					"<br>Age: " +
+					black.age +
+					"<br><br>"
+			);
+			document.write(
+				" 3rd dog's name: " +
+					golden.name +
+					"<br>Type: " +
+					golden.type +
+					"<br>Age: " +
+					golden.age +
+					"<br><br>"
+			);
+			document.write(
+				" 4th dog's name: " +
+					brown.name +
+					"<br>Type: " +
+					brown.type +
+					"<br>Age: " +
+					brown.age
+			);
+		</script>
+		<h1>Creating objects via classes</h1>
+		<script src="ScriptZad3.js"></script>
+	</body>
+	<footer>
+		<script>
+			//Getting the last modified time
+			let timeLastModified = document.lastModified;
+
+			//Outputting the last modified time
+			document.write("Last modified: " + timeLastModified);
+		</script>
+	</footer>
+</html>

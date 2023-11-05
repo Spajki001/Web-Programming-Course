@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="StyleZad2.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+		/>
+		<title>Zad2</title>
+	</head>
+	<body>
+		<h1 style="display: flex; flex-direction: column">Validation</h1>
+		<button id="Greeting">Greeting</button>
+		<p></p>
+		<div>
+			<label for="FnameLname">Name and surname: </label>
+			<textarea
+				type="textarea"
+				name="FnameLname"
+				id="FnameLname"
+				cols="25"
+				rows="1"
+			></textarea>
+		</div>
+		<div>
+			<label for="OutputArea">Output area: </label>
+			<textarea
+				type="text"
+				name="OutputArea"
+				id="OutputArea"
+				cols="50"
+				rows="10"
+				placeholder="Area for subject output."
+			></textarea>
+		</div>
+		<div>
+			<button id="SubjectsButton">Subjects</button>
+			<button id="ClearButton">Clear</button>
+		</div>
+		<div>
+			<label for="NumberPwr">Number input: </label>
+			<textarea
+				type="number"
+				name="NumberPwr"
+				id="NumberPwr"
+				cols="25"
+				rows="1"
+				required
+			></textarea>
+			<label
+				for="NumberPwr"
+				style="font-weight: bold"
+				title="Number has to be between 1 and 10!"
+				><i class="fa-solid fa-question"></i
+			></label>
+			<button id="SquaringButton" type="button">Squaring</button>
+			<p id="ResultField">The result output is here.</p>
+		</div>
+		<div>
+			<label for="EmailField">Your e-mail address: </label>
+			<textarea
+				type="text"
+				name="EmailField"
+				id="EmailField"
+				cols="25"
+				rows="1"
+			></textarea>
+		</div>
+		<div>
+			<button id="Check">Check!</button>
+		</div>
+		<script src="ScriptZad2.js"></script>
+	</body>
+</html>
