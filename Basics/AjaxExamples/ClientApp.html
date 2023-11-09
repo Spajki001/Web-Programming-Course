@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+			crossorigin="anonymous"
+		></script>
+		<title>Cars</title>
+		<script>
+			let manufacturer = "";
+			window.onload = function () {
+				document.getElementById("selectmodelsdiv").style.display = "none";
+				let url = "getmanufacturers.php";
+				fetch(url)
+					.then((response) => response.json())
+					.then((data) => {
+						let selectManufact = document.getElementById("manufact");
+						selectManufact.innerHTML = `
+                            <option value='0'>Select manufacturer</option>
+                        `;
+						data.map((man) => {
+							selectManufact.innerHTML += `
+                                <option value='${man.id}'>${man.name}</option>
+                            `;
+						});
+					});
+			};
+
+			const handleChangeManufact = (ref) => {
+				if (ref.value > 0) {
+					document.getElementById("selectmodelsdiv").style.display = "";
+					let modelURL = "getmodels.php";
+					let reqOpt = {
+						method: "POST",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify({
+							manid: parseInt(ref.value),
+						}),
+					};
+					fetch(modelURL, reqOpt)
+						.then((response) => response.json())
+						.then((data) => {
+							let carsSelect = document.getElementById("models");
+							carsSelect.innerHTML = "";
+							data.map((model) => {
+								carsSelect.innerHTML += `
+                                    <option value='${model.id}'>${model.name}</option>
+                                `;
+							});
+							carsSelect.selectedIndex = 0;
+							let event = new Event("change");
+							carsSelect.dispatchEvent(event);
+						});
+					manufacturer = ref.options[ref.selectedIndex].text + " ";
+				} else {
+					document.getElementById("selectmodelsdiv").style.display = "none";
+					manufacturer = "";
+				}
+				document.getElementById("selectedcar").innerHTML = manufacturer;
+			};
+
+			const handleChangeModel = (ref) => {
+				let model = ref.options[ref.selectedIndex].text;
+				document.getElementById("selectedcar").innerHTML = manufacturer + model;
+			};
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="text-center">Cars</h1>
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-3">
+					<select
+						id="manufact"
+						class="form-select"
+						onchange="handleChangeManufact(this)"
+					></select>
+				</div>
+			</div>
+			<div class="row mt-4" id="selectmodelsdiv">
+				<div class="col-1"></div>
+				<div class="col-3">
+					<select
+						id="models"
+						class="form-select"
+						onchange="handleChangeModel(this)"
+					></select>
+				</div>
+			</div>
+			<div class="row mt-3">
+				<div class="col-1"></div>
+				<div class="col-11" id="selectedcar"></div>
+			</div>
+		</div>
+	</body>
+</html>

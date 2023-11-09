@@ -1,4 +1,5 @@
 # **Web-Programming-Course**
+
 ## Author: Mateo Spajić
 
 - All examples from my web programming course in "Basics" folder just for future reference

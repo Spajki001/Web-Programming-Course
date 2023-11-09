@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+			crossorigin="anonymous"
+		></script>
+		<title>Register page</title>
+		<script>
+			let user = {
+				firstname: "",
+				lastname: "",
+				username: "",
+				useremail: "",
+				password: "",
+			};
+			const changeToText = (sid) => {
+				document.getElementById(sid).type = "text";
+			};
+			const changeToPassword = (sid) => {
+				document.getElementById(sid).type = "password";
+			};
+			const handleRegister = () => {
+				let fn = document.getElementById("firstname").value;
+				let ln = document.getElementById("lastname").value;
+				let un = document.getElementById("username").value;
+				let em = document.getElementById("useremail").value;
+				let p1 = document.getElementById("pwd1").value;
+				let p2 = document.getElementById("pwd2").value;
+				// validate user data
+				user.firstname = fn;
+				user.lastname = ln;
+				user.username = un;
+				user.useremail = em;
+				user.password = p1;
+				let myURL = "register.php";
+				let requestOptions = {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(user),
+				};
+				fetch(myURL, requestOptions)
+					.then((response) => response.json())
+					.then((data) => {
+						if (data[0].register == "ok") {
+							alert("Registration successful!");
+						} else {
+							alert("Error registering user: " + data[0].register);
+						}
+					});
+			};
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="text-center">Register page</h1>
+			<!-- <form action="register.php" method="post"> -->
+			<div class="form-floating mb-3">
+				<input
+					type="text"
+					class="form-control"
+					name="firstname"
+					id="firstname"
+					placeholder="Firstname"
+				/>
+				<label for="firstname">Firstname</label>
+			</div>
+			<div class="form-floating mb-3">
+				<input
+					type="text"
+					class="form-control"
+					name="lastname"
+					id="lastname"
+					placeholder="Lastname"
+				/>
+				<label for="lastname">Lastname</label>
+			</div>
+			<div class="form-floating mb-3">
+				<input
+					type="text"
+					class="form-control"
+					name="username"
+					id="username"
+					placeholder="Username"
+				/>
+				<label for="username">Username</label>
+			</div>
+			<div class="form-floating mb-3">
+				<input
+					type="email"
+					class="form-control"
+					name="useremail"
+					id="useremail"
+					placeholder="E-mail"
+				/>
+				<label for="useremail">E-mail</label>
+			</div>
+			<div class="input-group mb-3">
+				<div class="form-floating flex-grow-1">
+					<input
+						type="password"
+						class="form-control"
+						name="pwd1"
+						placeholder="Password"
+						id="pwd1"
+					/>
+					<label for="pwd1">Password</label>
+				</div>
+				<span
+					class="input-group-text"
+					onmousedown="changeToText('pwd1')"
+					onmouseup="changeToPassword('pwd1')"
+					onmouseover="this.style.cursor='pointer'"
+					onmouseleave="this.style.cursor='arrow'"
+					>&nbsp;O&nbsp;</span
+				>
+			</div>
+			<div class="input-group mb-3">
+				<div class="form-floating flex-grow-1">
+					<input
+						type="password"
+						class="form-control"
+						name="pwd2"
+						placeholder="Repeat password"
+						id="pwd2"
+					/>
+					<label for="pwd2">Repeat password</label>
+				</div>
+				<span
+					class="input-group-text"
+					onmousedown="changeToText('pwd2')"
+					onmouseup="changeToPassword('pwd2')"
+					onmouseover="this.style.cursor='pointer'"
+					onmouseleave="this.style.cursor='arrow'"
+					>&nbsp;O&nbsp;</span
+				>
+			</div>
+			<div class="row">
+				<div class="col-10"></div>
+				<div class="col-2">
+					<button
+						type="button"
+						class="btn btn-success form-control"
+						onclick="handleRegister()"
+					>
+						Register
+					</button>
+				</div>
+			</div>
+			<!-- </form> -->
+		</div>
+	</body>
+</html>
