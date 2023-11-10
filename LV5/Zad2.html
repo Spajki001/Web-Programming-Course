@@ -1,0 +1,26 @@
+<script>
+	fetch("DataZad2.json").then((data) => {
+		data.json().then((jsonData) => {
+			jsonData.forEach((student) => {
+				console.log(`Student: ${student.ime}`);
+				console.log(`Godina: ${student.godina}`);
+				console.log(`Red student: ${student.redStudent}`);
+				console.log(`Najdraži kolegiji: ${student.najdraziKolegiji}`);
+				console.log(" ");
+			});
+			// Editing the second object
+			jsonData[1].ime = "Mateo";
+			jsonData[1].godina = 21;
+			jsonData[1].redStudent = true;
+			jsonData[1].najdraziKolegiji = ["Web programiranje"];
+
+			//Saving the second object to local browser storage
+			localStorage.setItem("students", JSON.stringify(jsonData));
+
+			//Console logging the new data from local browser storage
+			const updatedJsonData = JSON.parse(localStorage.getItem("students"));
+
+			console.log(updatedJsonData[1]);
+		});
+	});
+</script>
