@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="StyleZad4.css" />
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+		<title>Zad4</title>
+	</head>
+	<body>
+		<h1>Task 4</h1>
+		<p>This list shows my 3 favourite TV series.</p>
+		<ul>
+			<li>The Shining</li>
+			<li>Chernobyl</li>
+			<li>Lucifer</li>
+		</ul>
+		<p>This list shows my 3 favourite songs.</p>
+		<ul>
+			<li>Mockingbird - Eminem</li>
+			<li>Demons are a girl's best friend - Powerwolf</li>
+			<li>Dancing with the dead - Powerwolf</li>
+		</ul>
+		<div style="display: flex">
+			<button id="greenButton">Green</button>
+			<button id="magicButton">Abrakadabra</button>
+		</div>
+		<div style="display: flex">
+			<img
+				id="firstImg"
+				src="https://placehold.co/300x200/png"
+				alt="imageFirst"
+			/>
+			<img
+				id="secondImg"
+				src="https://placehold.co/300x200/png"
+				alt="imageSecond"
+			/>
+			<img
+				id="thirdImg"
+				src="https://placehold.co/300x200/png"
+				alt="imageThird"
+			/>
+		</div>
+		<script>
+			$(document).ready(function () {
+				$("#greenButton").click(function () {
+					$("ul").first().addClass("green");
+				});
+				$("#magicButton").click(function () {
+					$("#firstImg").fadeOut("fast");
+					$("#secondImg").fadeOut("slow");
+					$("#thirdImg").fadeOut(5000);
+				});
+				$("img").hover(
+					function () {
+						$(this).addClass("hover");
+					},
+					function () {
+						$(this).removeClass("hover");
+					}
+				);
+			});
+		</script>
+	</body>
+</html>

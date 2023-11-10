@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			//tri načina definiranja funkcije u ES6
+			function ispisiParametar1(parametar) {
+				console.log(parametar);
+			}
+			var ispisiParametar2 = function (parametar) {
+				console.log(parametar);
+			};
+			var ispisiParametar3 = (parametar) => {
+				console.log(parametar);
+			};
+			ispisiParametar1("Prva");
+			ispisiParametar2("Druga");
+			ispisiParametar3("Treca");
+			//Original function vratiIme
+			function vratiIme(ime) {
+				var x = ime;
+				function f(x) {
+					return x;
+				}
+				return f(x);
+			}
+			//Anonymous self-calling function
+			var ime = (function (ime) {
+				var x = ime;
+				function f(x) {
+					return x;
+				}
+				return f(x);
+			})("Pero Perić");
+			var y = vratiIme("Hrvoje Horvat");
+			console.log(y);
+			var z = vratiIme("Hrvoje Horvat");
+			console.log(z);
+			console.log("Predano ime je" + ime);
+		</script>
+	</head>
+	<body></body>
+</html>

@@ -1,0 +1,14 @@
+[
+	{
+		"ime": "Marko",
+		"godina": 22,
+		"redStudent": true,
+		"najdraziKolegiji": ["Fizika", "Matematika", "Web programiranje"]
+	},
+	{
+		"ime": "Ime",
+		"godina": 19,
+		"redStudent": false,
+		"najdraziKolegiji": null
+	}
+]
