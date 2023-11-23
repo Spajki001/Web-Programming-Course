@@ -4,7 +4,7 @@
 
 - You have to make a symbolic link to `htdocs` folder for easier accessibility while coding.
 - You can create the link by running<br>
-`ln -s /opt/lampp/htdocs /home/spajki/Web-Programming-Course/LV6/htdocs`<br>
+`ln -s /opt/lampp/htdocs /home/{user}/Web-Programming-Course/LV6/htdocs`<br>
 command in Linux terminal after moving to `LV6` directory.
 
 ## Zad2

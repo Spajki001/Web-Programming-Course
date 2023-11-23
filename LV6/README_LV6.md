@@ -4,14 +4,14 @@
 
 - You have to make a symbolic link to `htdocs` folder for easier accessibility while coding.
 - You can create the link by running<br>
-`ln -s /opt/lampp/htdocs /home/spajki/Web-Programming-Course/LV6/htdocs`<br>
+`ln -s /opt/lampp/htdocs /home/{user}/Web-Programming-Course/LV6/htdocs`<br>
 command in Linux terminal after moving to `LV6` directory.
 
 ## Zad1 & Zad2
 
 - It is required to install xampp. You have to move `Zad1.php`, `Zad2.php` and `TextZad2.txt` files to xampp `htdocs` directory.
 - After doing everything, you have to start the Apache web server in XAMPP and access it through the browser.
-- You start php scripts by going to `localhost/ScriptName.php` where `ScriptName.php` is your script's name.
+- You start php scripts by going to `localhost/{ScriptName.php}` where `{ScriptName.php}` is your script's name.
 
 ## Zad3
 
