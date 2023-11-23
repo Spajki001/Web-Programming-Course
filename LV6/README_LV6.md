@@ -9,7 +9,7 @@ command in Linux terminal after moving to `LV6` directory.
 
 ## Zad1 & Zad2
 
-- It is required to install xampp. You have to move `Zad1.php`, `Zad2.php` and `TextZad2.txt` files to xampp `htdocs` directory.
+- It is required to install XAMPP. You have to move `Zad1.php`, `Zad2.php` and `TextZad2.txt` files to XAMPP `htdocs` directory.
 - After doing everything, you have to start the Apache web server in XAMPP and access it through the browser.
 - You start php scripts by going to `localhost/{ScriptName.php}` where `{ScriptName.php}` is your script's name.
 
