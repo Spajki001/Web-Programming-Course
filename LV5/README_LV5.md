@@ -9,7 +9,7 @@ command in Linux terminal after moving to `LV6` directory.
 
 ## Zad2
 
-- It is required to install xampp. You have to move `DataZad2.json` file to XAMPP `htdocs` directory and add the `<script>` code from `Zad2.html` file to the `applications.html` file in `htdocs` directory.
+- It is required to install XAMPP. You have to move `DataZad2.json` file to XAMPP `htdocs` directory and add the `<script>` code from `Zad2.html` file to the `applications.html` file in `htdocs` directory.
 - After doing everything, you have to start the Apache web server in XAMPP and access it through the browser.
 
 ## Zad3
