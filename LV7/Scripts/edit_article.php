@@ -2,7 +2,6 @@
 include 'connection.php';
 $name = $_SESSION['name'];
 $surname = $_SESSION['surname'];
-$id = $_GET['id'];
 
 // Check if user is logged in
 if (!isset($_SESSION['username'])) {
@@ -32,19 +31,19 @@ if (isset($_POST['submit']))
     $description = $_POST['description'];
     $amount = $_POST['amount'];
     $price = $_POST['price'];
+    $id = $_POST['id'];
 
     $stmt = $conn->prepare("UPDATE articles SET article = ?, description = ?, amount = ?, price = ? WHERE id = ?");
-    if ($stmt) {
-        $stmt->bind_param("ssisi", $article, $description, $amount, $price, $id);
-        $stmt->execute();
-        
-        if ($stmt->affected_rows > 0) {
-            echo "Update successful!";
-        } else {
-            echo "No rows were updated.";
-        }
+    $stmt->bind_param("ssisi", $article, $description, $amount, $price, $id);
+    try {$stmt->execute();
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    }
+
+    if ($stmt->affected_rows > 0) {
+        echo "Update successful!";
     } else {
-        echo "Error in the prepared statement: " . $conn->error;
+        echo "No rows were updated.";
     }
     $stmt->close();
 }
@@ -81,6 +80,7 @@ if (isset($_POST['submit']))
             <label for="">Price</label><br>
             <input type="text" name="price" maxlength="5" value="<?= $price ?>" required>
             <label for="">€</label><br><br>
+            <input type="hidden" name="id" value="<?= $id ?>">
             <button type="submit" name="submit" class="btn btn-success mb-1">Submit</button><br>
         </form>
         <a href="articles.php" class="btn btn-outline-primary btn-sm" role="button">Show articles</a>
