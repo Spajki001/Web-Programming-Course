@@ -43,7 +43,7 @@ if (isset($_POST['submit']))
 
     if ($stmt->affected_rows > 0) {
         echo "<header>
-                    <div class='alert alert-danger mt-3' role='alert'>
+                    <div class='alert alert-success mt-3' role='alert'>
                         Update successful!
                     </div>
             <header/>";
