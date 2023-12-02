@@ -18,13 +18,25 @@ if (!isset($_SESSION['username'])) {
     <style>
         body{
             text-align: center;
+            display: flex;
+            justify-content: center;
         }
     </style>
     <title>Input confirmation</title>
 </head>
     <body>
-        <h1>Article has been added succesfully!</h1>
-        <a href="add_article.php" class="btn btn-outline-danger btn-sm" role="button">Back to add article</a>
-        <a href="articles.php" class="btn btn-success btn-sm" role="button">Show articles</a>
+        <div class="d-flex justify-content-center align-items-center" style="height: auto">
+            <div style="width: 50vw;">
+                <div class="jumbotron">
+                    <h1 class="display-4">Article has been added succesfully!</h1>
+                </div>
+                <div class="d-inline me-2">
+                    <a href="add_article.php" class="btn btn-outline-danger" role="button">Back to add article</a>
+                </div>
+                <div class="d-inline">
+                    <a href="articles.php" class="btn btn-primary" role="button">Show articles</a>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

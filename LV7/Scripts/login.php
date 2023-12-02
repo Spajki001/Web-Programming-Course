@@ -27,11 +27,18 @@ if (isset($_POST['submit']))
                 exit;
             }
         } else {
-            echo "Invalid password";
+            echo "<header>
+                    <div class='alert alert-danger mt-3' role='alert'>
+                        Invalid password!
+                    </div>
+                <header/>";
         }
     } else {
-        echo "Username does not exist!<br>";
-        echo "Try registering.<br>";
+        echo "<header>
+                <div class='alert alert-danger mt-3' role='alert'>
+                    Username does not exist!<br>Try registering.
+                </div>
+            <header/>";
     }
 }
 ?>
@@ -46,19 +53,35 @@ if (isset($_POST['submit']))
     <style>
         body{
             text-align: center;
+            display: flex;
+            justify-content: center;
         }
     </style>
     <title>Login</title>
 </head>
     <body>
-        <h1>Login</h1>
-        <form action="login.php" method="post">
-            <label for="">Username</label><br>
-            <input type="text" name="username"><br>
-            <label for="">Password</label><br>
-            <input type="password" name="password"><br>
-            <button type="submit" class="btn btn-primary btn-sm mt-2" name="submit">Login</button><br>
-            <a href="register.php" class="btn btn-outline-secondary btn-sm mt-2" role="button">Register</a>
-        </form>
+        <div class="d-flex justify-content-center align-items-center" style="height: auto">
+            <div style="width: 30vw;">
+                <div class="jumbotron">
+                    <h1 class="display-4">Login</h1>
+                </div>
+                <form action="login.php" method="post">
+                    <div class="form-floating mb-3 mt-3">
+                        <input type="text" class="form-control" name="username" id="username" placeholder="username"  required>
+                        <label for="username" class="form-label">Username</label>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="password"  required></input>
+                        <label for="password" class="form-label">Password</label>
+                    </div>
+                    <div class="d-inline me-2">
+                        <button type="submit" class="btn btn-primary mt-2" name="submit">Login</button>
+                    </div>
+                    <div class="d-inline">
+                        <a href="register.php" class="btn btn-outline-secondary mt-2" role="button">Register</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

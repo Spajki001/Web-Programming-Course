@@ -23,63 +23,84 @@ $surname = $_SESSION['surname'];
         h1, p{
             text-align: center;
         }
+        body{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+        .table-container {
+            margin-top: 20px;
+        }
     </style>
     <title>Articles</title>
 </head>
     <body>
-        <h1>Articles</h1>
-        <p><script>
-            var name = "<?= $name ?>";
-            var surname = "<?= $surname ?>";
-            document.write("Logged in as " + name + " " + surname);
-        </script></p>
-        <div class="text-center pb-3">    
-            <?php
-                if($_SESSION['role'] == 'admin'){
-                    echo "<a href='add_article.php' class='btn btn-primary btn-sm mr-1' role='button'>Add article</a>";
-                }
-            ?>
-            <a href="logout.php" class="btn btn-sm btn-outline-danger" role="button">Logout</a>
-        </div>
-        <?php
-            $sql = "SELECT * FROM articles";
-            $result = $conn->query($sql);
+        <div class="col">
+            <div class="row d-flex justify-content-center align-items-center" style="height: auto">
+                <div style="width: 30vw;">
+                    <div class="jumbotron">
+                        <h1 class="display-4">Articles</h1>
+                        <p><script>
+                            var name = "<?= $name ?>";
+                            var surname = "<?= $surname ?>";
+                            document.write("Logged in as " + name + " " + surname);
+                        </script></p>
+                    </div>
+                    <div class="d-inline me-2">
+                        <?php
+                            if($_SESSION['role'] == 'admin'){
+                            echo "<a href='add_article.php' class='btn btn-primary mr-1' role='button'>Add article</a>";
+                            }
+                        ?>
+                    </div>
+                    <div class="d-inline">
+                        <a href="logout.php" class="btn btn-outline-danger" role="button">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row table-container">
+                <?php
+                    $sql = "SELECT * FROM articles";
+                    $result = $conn->query($sql);
 
-            echo "<style>
-            td, th{
-                text-align: center;
-            }
-            </style>";
-
-            if ($result->num_rows > 0)
-            {
-                echo "<table class='table table-striped table-hover'><tr>
-                <th>Article</th>
-                <th>Description</th>
-                <th>Amount</th>
-                <th>Price</th>";
-                // If user is admin, show edit and delete columns
-                if($_SESSION['role'] == 'admin'){
-                    echo "<th>Edit</th>
-                    <th>Delete</th></tr>";
-                } else {
-                    echo "</tr>";
-                }
-                while ($row = $result->fetch_assoc())
-                {
-                    echo "<tr><td>" . $row['article'] . "</td><td>" . $row['description'] . "</td><td>" . $row['amount'] . "</td><td>" . $row['price'] . "€</td>";
-                    // If user is admin, show edit and delete buttons
-                    if($_SESSION['role'] == 'admin'){
-                        echo "<td><a href='edit_article.php?id=" . $row['id'] . "' class='btn btn-primary btn-sm' role='button'><i class='fa-solid fa-pen-to-square'></i> Edit</a></td>
-                        <td><a href='delete_article.php?id=" . $row['id'] . "' class='btn btn-outline-danger btn-sm' role='button'><i class='fa-solid fa-trash'></i> Delete</a></td></tr>";
-                    } else {
-                        echo "</tr>";
+                    echo "<style>
+                    td, th{
+                        text-align: center;
+                        vertical-align: middle;
                     }
-                }
-                echo "</table>";
-            }
-            else
-                echo "No articles";
-        ?>
+                    </style>";
+
+                    if ($result->num_rows > 0)
+                    {
+                        echo "<table class='table table-striped table-hover d-flex justify-content-center align-items-center'><tr>
+                        <th>Article</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Price</th>";
+                        // If user is admin, show edit and delete columns
+                        if($_SESSION['role'] == 'admin'){
+                            echo "<th>Edit</th>
+                            <th>Delete</th></tr>";
+                        } else {
+                            echo "</tr>";
+                        }
+                        while ($row = $result->fetch_assoc())
+                        {
+                            echo "<tr><td>" . $row['article'] . "</td><td>" . $row['description'] . "</td><td>" . $row['amount'] . "</td><td>" . $row['price'] . "€</td>";
+                            // If user is admin, show edit and delete buttons
+                            if($_SESSION['role'] == 'admin'){
+                                echo "<td><a href='edit_article.php?id=" . $row['id'] . "' class='btn btn-primary btn-sm' role='button'><i class='fa-solid fa-pen-to-square'></i> Edit</a></td>
+                                <td><a href='delete_article.php?id=" . $row['id'] . "' class='btn btn-outline-danger btn-sm' role='button'><i class='fa-solid fa-trash'></i> Delete</a></td></tr>";
+                            } else {
+                                echo "</tr>";
+                            }
+                        }
+                        echo "</table>";
+                    }
+                    else
+                        echo "No articles";
+                ?>
+            </div>
+        </div>
     </body>
 </html>

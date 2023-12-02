@@ -8,15 +8,24 @@
     <style>
         body{
             text-align: center;
+            display: flex;
+            justify-content: center;
         }
     </style>
     <title>Index</title>
 </head>
     <body>
-        <h1>Index</h1>
-        <div class="text-center pb-3">    
-            <a href="login.php" class="btn btn-primary btn-sm mr-1" role="button">Login</a>
-            <a href="register.php" class="btn btn-sm btn-outline-secondary" role="button">Register</a>
+        <div class="d-flex justify-content-center align-items-center" style="height: auto">
+            <div style="width: 30vw;">
+                <div class="jumbotron">
+                    <h1 class="display-4">Index</h1>
+                </div>
+            <div class="d-inline me-2">
+                <a href="login.php" class="btn btn-primary mt-2" role="button">Login</a>
+            </div>
+            <div class="d-inline">
+                <a href="register.php" class="btn btn-outline-secondary mt-2" role="button">Register</a>
+            </div>
         </div>
     </body>
 </html>

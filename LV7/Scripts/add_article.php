@@ -43,30 +43,54 @@ if (isset($_POST['submit']))
     <style>
         body{
             text-align: center;
+            display: flex;
+            justify-content: center;
         }
     </style>
     <title>Add_article</title>
 </head>
     <body>
-        <h1>Add article</h1>
-        <h2><script>
-            var name = "<?= $name ?>";
-            var surname = "<?= $surname ?>";
-            document.write("Welcome " + name + " " + surname + "!");
-        </script></h2>
-        <form action="add_article.php" method="post">
-            <label for="">Article</label><br>
-            <input type="text" name="article" maxlength="100" required><br>
-            <label for="">Description</label><br>
-            <textarea name="description" cols="100" rows="10" maxlength="1000"></textarea><br>
-            <label for="">Amount</label><br>
-            <input type="number" name="amount" max="99999" required><br>
-            <label for="">Price</label><br>
-            <input type="text" name="price" maxlength="5" required>
-            <label for="">€</label><br><br>
-            <button type="submit" name="submit" class="btn btn-success mb-1">Submit</button><br>
-        </form>
-        <a href="articles.php" class="btn btn-outline-primary btn-sm" role="button">Show articles</a>
-        <a href="logout.php" class="btn btn-outline-danger btn-sm" role="button">Logout</a>
+        <div class="d-flex justify-content-center align-items-center" style="height: auto">
+            <div style="width: 30vw;">
+                <div class="jumbotron">
+                    <h1 class="display-4">Add article</h1>
+                    <h3 class="display-9"><script>
+                    var name = "<?= $name ?>";
+                    var surname = "<?= $surname ?>";
+                    document.write("Welcome " + name + " " + surname + "!");
+                    </script></h2>
+                </div>
+                <form action="add_article.php" method="post">
+                    <div class="form-floating mb-3 mt-3">
+                        <input type="text" class="form-control" name="article" id="article" placeholder="Article" maxlength="100" required>
+                        <label for="article" class="form-label">Article</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea name="description" class="form-control" id="description" placeholder="Description" maxlength="1000" style="height: 99px;"></textarea>
+                        <label for="description" class="form-label">Description</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" name="amount" id="amount" placeholder="Amount" max="99999" required>
+                        <label for="amount" class="form-label">Amount</label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" name="price" id="price" placeholder="Price" maxlength="100" required>
+                            <label for="price" class="form-label">Price</label>
+                        </div>
+                        <span class="input-group-text">€</span>
+                    </div>
+                    <div class="d-inline me-2">
+                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                    </div>
+                    <div class="d-inline me-2">
+                        <a href="articles.php" class="btn btn-outline-secondary" role="button">Show articles</a>
+                    </div>
+                    <div class="d-inline">
+                        <a href="logout.php" class="btn btn-outline-danger" role="button">Logout</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </body>
 </html>
