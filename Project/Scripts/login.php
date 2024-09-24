@@ -19,7 +19,7 @@ if (isset($_POST['submit']))
             $_SESSION['surname'] = $row['surname'];
             $_SESSION['role'] = $row['role'];
 
-            if ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'superuser') {
+            if ($_SESSION['role'] == 'admin') {
                 header("Location: add_article.php");
                 exit;
             } else {

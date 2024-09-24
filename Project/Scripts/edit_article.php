@@ -10,7 +10,7 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 
-if($_SESSION['role'] != 'admin' && $_SESSION['role'] != 'superuser'){
+if($_SESSION['role'] != 'admin'){
     header("Location: articles.php");
     exit;
 }
@@ -43,7 +43,7 @@ if (isset($_POST['submit']))
 
     if ($stmt->affected_rows > 0) {
         echo "<header>
-                    <div class='alert alert-success mt-3' role='alert'>
+                    <div class='alert alert-danger mt-3' role='alert'>
                         Update successful!
                     </div>
             <header/>";
@@ -83,7 +83,7 @@ if (isset($_POST['submit']))
                     var name = "<?= $name ?>";
                     var surname = "<?= $surname ?>";
                     document.write("Welcome " + name + " " + surname + "!");
-                    </script></h3>
+                    </script></h2>
                 </div>
                 <form action="edit_article.php" method="post">
                     <div class="form-floating mb-3 mt-3">

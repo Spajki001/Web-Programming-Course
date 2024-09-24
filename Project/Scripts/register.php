@@ -38,7 +38,7 @@ if(isset($_POST['submit'])){
         }
         elseif($result && !$user_exists){
             echo "<header>
-                    <div class='alert alert-success mt-3' role='alert'>
+                    <div class='alert alert-danger mt-3' role='alert'>
                         Registration successful!<br>Try logging in.
                     </div>
                 <header/>";
@@ -71,23 +71,23 @@ if(isset($_POST['submit'])){
                 </div>
                 <form action="register.php" method="post">
                     <div class="form-floating mb-3 mt-3">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required />
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
                         <label for="name" class="form-label">Name</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname"  required />
+                        <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname"  required>
                         <label for="surname" class="form-label">Surname</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="E-mail"  required />
+                        <input type="email" class="form-control" id="email" name="email" placeholder="E-mail"  required>
                         <label for="email" class="form-label">E-mail</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Username"  required />
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username"  required>
                         <label for="username" class="form-label">Username</label>
                     </div>
                     <div class="form-floating mb-2">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password"  required />
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password"  required>
                         <label for="password" class="form-label">Password</label>
                     </div>
                     <div class="d-inline me-2">

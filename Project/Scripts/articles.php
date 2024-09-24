@@ -48,15 +48,8 @@ $surname = $_SESSION['surname'];
                     </div>
                     <div class="d-inline me-2">
                         <?php
-                            if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'superuser'){
-                            echo "<a href='add_article.php' class='btn btn-primary mr-1' role='button'>Add article</a>";
-                            }
-                        ?>
-                    </div>
-                    <div class="d-inline me-2">
-                        <?php
                             if($_SESSION['role'] == 'admin'){
-                            echo "<a href='user_management.php' class='btn btn-outline-secondary mr-1' role='button'>User management</a>";
+                            echo "<a href='add_article.php' class='btn btn-primary mr-1' role='button'>Add article</a>";
                             }
                         ?>
                     </div>
@@ -85,7 +78,7 @@ $surname = $_SESSION['surname'];
                         <th>Amount</th>
                         <th>Price</th>";
                         // If user is admin, show edit and delete columns
-                        if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'superuser'){
+                        if($_SESSION['role'] == 'admin'){
                             echo "<th>Edit</th>
                             <th>Delete</th></tr>";
                         } else {
@@ -95,7 +88,7 @@ $surname = $_SESSION['surname'];
                         {
                             echo "<tr><td>" . $row['article'] . "</td><td>" . $row['description'] . "</td><td>" . $row['amount'] . "</td><td>" . $row['price'] . "€</td>";
                             // If user is admin, show edit and delete buttons
-                            if($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'superuser'){
+                            if($_SESSION['role'] == 'admin'){
                                 echo "<td><a href='edit_article.php?id=" . $row['id'] . "' class='btn btn-primary btn-sm' role='button'><i class='fa-solid fa-pen-to-square'></i> Edit</a></td>
                                 <td><a href='delete_article.php?id=" . $row['id'] . "' class='btn btn-outline-danger btn-sm' role='button'><i class='fa-solid fa-trash'></i> Delete</a></td></tr>";
                             } else {
