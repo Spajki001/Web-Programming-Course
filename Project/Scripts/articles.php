@@ -28,13 +28,18 @@ $surname = $_SESSION['surname'];
             display: flex;
             justify-content: center;
         }
-        .table-container {
-            margin-top: 20px;
+        .card-img-top {
+            width: 95%;
+            height: 15vw;
+            object-fit: contain;
+            align-self: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
         }
     </style>
     <title>Articles</title>
 </head>
-    <body>
+    <body style="overflow-x: hidden;">
         <div class="col">
             <div class="row d-flex justify-content-center align-items-center" style="height: auto">
                 <div style="width: 30vw;">
@@ -49,53 +54,54 @@ $surname = $_SESSION['surname'];
                     <div class="d-inline me-2">
                         <?php
                             if($_SESSION['role'] == 'admin'){
-                            echo "<a href='add_article.php' class='btn btn-primary mr-1' role='button'>Add article</a>";
+                            echo "<a href='add_article.php' class='btn btn-primary mr-1' role='button'><i class='fa-solid fa-plus'></i> Add article</a>";
                             }
                         ?>
                     </div>
+                    <div class="d-inline me-2">
+                        <a href="cart.php" class="btn btn-success" role="button"><i class='fa-solid fa-cart-shopping'></i> Cart</a>
+                    </div>
                     <div class="d-inline">
-                        <a href="logout.php" class="btn btn-outline-danger" role="button">Logout</a>
+                        <a href="logout.php" class="btn btn-outline-danger" role="button"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                     </div>
                 </div>
             </div>
-            <div class="row table-container">
+            <div class="row" style="padding-top: 1%; padding-left: 5%; padding-right: 2%; padding-bottom: 1%">
                 <?php
                     $sql = "SELECT * FROM articles";
                     $result = $conn->query($sql);
 
-                    echo "<style>
-                    td, th{
-                        text-align: center;
-                        vertical-align: middle;
-                    }
-                    </style>";
-
                     if ($result->num_rows > 0)
                     {
-                        echo "<table class='table table-striped table-hover d-flex justify-content-center align-items-center'><tr>
-                        <th>Article</th>
-                        <th>Description</th>
-                        <th>Amount</th>
-                        <th>Price</th>";
-                        // If user is admin, show edit and delete columns
-                        if($_SESSION['role'] == 'admin'){
-                            echo "<th>Edit</th>
-                            <th>Delete</th></tr>";
-                        } else {
-                            echo "</tr>";
-                        }
-                        while ($row = $result->fetch_assoc())
-                        {
-                            echo "<tr><td>" . $row['article'] . "</td><td>" . $row['description'] . "</td><td>" . $row['amount'] . "</td><td>" . $row['price'] . "€</td>";
+                        echo "<div class='container text-center'>
+                            <div class='row justify-content-around row-cols-4'>";
+
+                        while ($row = $result->fetch_assoc()){
+                            echo "<div class='col'>
+                                    <div class='card mb-3' style='width: 23rem;'>
+                                        <img src='$row[image_path]' class='card-img-top img-fluid' alt='Image'>
+                                        <div class='card-body align-items-center justify-content-center'>
+                                            <h5 class='card-title text-truncate'>$row[article]</h5>
+                                            <p class='card-text'>$row[price] €</p>";
+                                            if($_SESSION['role'] == 'admin'){
+                                                echo "<td><a href='article_info.php?id=$row[id]' class='btn btn-primary btn-sm' role='button'><i class='fa-solid fa-bars'></i> Read more</a></td>
+                                                
+                                                <td><a href='add_to_cart.php?id=" . $row['id'] . "' class='btn btn-success btn-sm' role='button'><i class='fa-solid fa-cart-shopping'></i> Add to cart</a></td>
+
+                                                <td><a href='edit_article.php?id=" . $row['id'] . "' class='btn btn-secondary btn-sm' role='button'><i class='fa-solid fa-pen-to-square'></i> Edit</a></td>
+
+                                                <td><a href='delete_article.php?id=" . $row['id'] . "' class='btn btn-outline-danger btn-sm' role='button'><i class='fa-solid fa-trash'></i> Delete</a></td>";
+                                            } else {
+                                                echo "<a href='article_info.php?id=$row[id]' class='btn btn-primary btn-sm' role='button'><i class='fa-solid fa-bars'></i> Read more</a>";
+                                            }
+                                        echo "</div>
+                                    </div>
+                                </div>";
                             // If user is admin, show edit and delete buttons
-                            if($_SESSION['role'] == 'admin'){
-                                echo "<td><a href='edit_article.php?id=" . $row['id'] . "' class='btn btn-primary btn-sm' role='button'><i class='fa-solid fa-pen-to-square'></i> Edit</a></td>
-                                <td><a href='delete_article.php?id=" . $row['id'] . "' class='btn btn-outline-danger btn-sm' role='button'><i class='fa-solid fa-trash'></i> Delete</a></td></tr>";
-                            } else {
-                                echo "</tr>";
-                            }
+                            
                         }
-                        echo "</table>";
+                        echo "</div>
+                        </div>";
                     }
                     else
                         echo "No articles";

@@ -20,8 +20,12 @@ if (isset($_POST['submit']))
     $description = $_POST['description'];
     $amount = $_POST['amount'];
     $price = $_POST['price'];
+    $targetPath = 'article_images/';
+    $targetPath .= basename($_FILES['image']['name']);
 
-    $sql = "INSERT INTO articles (article, description, amount, price) VALUES ('$article', '$description', '$amount', '$price')";
+    move_uploaded_file($_FILES['image']['tmp_name'], $targetPath);
+
+    $sql = "INSERT INTO articles (article, description, amount, price, image_path) VALUES ('$article', '$description', '$amount', '$price', '$targetPath')";
     $result = $conn->query($sql);
 
     if ($result){
@@ -60,7 +64,7 @@ if (isset($_POST['submit']))
                     document.write("Welcome " + name + " " + surname + "!");
                     </script></h2>
                 </div>
-                <form action="add_article.php" method="post">
+                <form action="add_article.php" method="post" enctype="multipart/form-data">
                     <div class="form-floating mb-3 mt-3">
                         <input type="text" class="form-control" name="article" id="article" placeholder="Article" maxlength="100" required>
                         <label for="article" class="form-label">Article</label>
@@ -79,6 +83,10 @@ if (isset($_POST['submit']))
                             <label for="price" class="form-label">Price</label>
                         </div>
                         <span class="input-group-text">€</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" name="image" id="image" accept="image/*" required>
+                        <label for="image" class="input-group-text">Upload image</label>
                     </div>
                     <div class="d-inline me-2">
                         <button type="submit" class="btn btn-primary" name="submit">Submit</button>

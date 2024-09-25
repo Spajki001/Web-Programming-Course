@@ -24,6 +24,7 @@ if(isset($id)) {
     $description = $row['description'];
     $amount = $row['amount'];
     $price = $row['price'];
+    $image_path = $row['image_path'];
 }
 
 if (isset($_POST['submit']))
@@ -33,9 +34,18 @@ if (isset($_POST['submit']))
     $amount = $_POST['amount'];
     $price = $_POST['price'];
     $id = $_POST['id'];
+    $targetPath = 'article_images/';
+    $targetPath .= basename($_FILES['image']['name']);
 
-    $stmt = $conn->prepare("UPDATE articles SET article = ?, description = ?, amount = ?, price = ? WHERE id = ?");
-    $stmt->bind_param("ssisi", $article, $description, $amount, $price, $id);
+    if ($_FILES['image']['name'] == "") {
+        $target_path = $image_path;
+    } else {
+        unlink($image_path);
+        move_uploaded_file($_FILES['image']['tmp_name'], $targetPath);
+    }
+
+    $stmt = $conn->prepare("UPDATE articles SET article = ?, description = ?, amount = ?, price = ?, image_path = ? WHERE id = ?");
+    $stmt->bind_param("ssissi", $article, $description, $amount, $price, $target_path, $id);
     try {$stmt->execute();
     } catch (Exception $e) {
         echo "Error: " . $e->getMessage();
@@ -85,7 +95,7 @@ if (isset($_POST['submit']))
                     document.write("Welcome " + name + " " + surname + "!");
                     </script></h2>
                 </div>
-                <form action="edit_article.php" method="post">
+                <form action="edit_article.php" method="post" enctype="multipart/form-data">
                     <div class="form-floating mb-3 mt-3">
                         <input type="text" class="form-control" name="article" id="article" placeholder="Article" maxlength="100" value="<?= $article ?>" required>
                         <label for="article" class="form-label">Article</label>
@@ -104,6 +114,10 @@ if (isset($_POST['submit']))
                             <label for="price" class="form-label">Price</label>
                         </div>
                         <span class="input-group-text">€</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" name="image" id="image" accept="image/*">
+                        <label for="image" class="input-group-text">Upload image</label>
                     </div>
                     <div class="form-floating mb-3" hidden>
                         <input type="hidden" name="id" value="<?= $id ?>">

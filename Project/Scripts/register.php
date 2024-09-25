@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
                 </div>
             <header/>";
     } else {
-        $sql = "INSERT INTO users (name, surname, e_mail, username, password) VALUES ('$name', '$surname', '$email', '$username', '$hashed_password')";
+        $sql = "INSERT INTO users (name, surname, e_mail, username, password, role) VALUES ('$name', '$surname', '$email', '$username', '$hashed_password', 'user')";
         $result = $conn->query($sql);
 
         if(!$result){

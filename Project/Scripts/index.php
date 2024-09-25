@@ -12,13 +12,13 @@
             justify-content: center;
         }
     </style>
-    <title>Index</title>
+    <title>Secret Index</title>
 </head>
     <body>
         <div class="d-flex justify-content-center align-items-center" style="height: auto">
             <div style="width: 30vw;">
                 <div class="jumbotron">
-                    <h1 class="display-4">Index</h1>
+                    <h1 class="display-4">Secret Index</h1>
                 </div>
             <div class="d-inline me-2">
                 <a href="login.php" class="btn btn-primary mt-2" role="button">Login</a>
