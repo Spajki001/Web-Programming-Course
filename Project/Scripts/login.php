@@ -17,14 +17,9 @@ if (isset($_POST['submit']))
             $_SESSION['name'] = $row['name'];
             $_SESSION['surname'] = $row['surname'];
             $_SESSION['role'] = $row['role'];
-
-            if ($_SESSION['role'] == 'admin') {
-                header("Location: add_article.php");
-                exit;
-            } else {
-                header("Location: articles.php");
-                exit;
-            }
+            
+            header("Location: articles.php");
+            
         } else {
             echo "<header>
                     <div class='alert alert-danger mt-3' role='alert'>
